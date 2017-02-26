@@ -1,9 +1,12 @@
 import React from 'react'
 import CartItem from './CartItem.jsx'
+import {Link, IndexLink} from 'react-router'
 
 export default class ProductView extends React.Component {
   render() {
+    let path = (this.props.path)
     let total = 0, items
+    let checkout = (<Link to='/Checkout'>Proceed to checkout</Link>)
     if (this.props.CartProduct.length === 0) {
       return (
         <div className="book-view"></div>
@@ -38,7 +41,7 @@ export default class ProductView extends React.Component {
           <br />
           Total Price: Rs.{total}
           <br />
-          <button>Proceed to checkout</button>
+          {path === '/' ? checkout : <div></div>}          
         </div>
       )
     }

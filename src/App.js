@@ -2,7 +2,10 @@ import React from 'react'
 import ProductList from './ProductList.jsx'
 import ProductView from './ProductView.jsx'
 import products from './products.jsx'
+import Payment from './Payment.jsx'
 import './App.css'
+import {Link, IndexLink} from 'react-router'
+import {Router} from 'react-router'
 
 export default class App extends React.Component {
   constructor () {
@@ -36,11 +39,13 @@ export default class App extends React.Component {
   }
 
   render () {
+      //let path = (this.props.location.pathname)
+      let productList = (<ProductList products={this.state.filteredProducts} updateView={this.updateView.bind(this)} deleteFromCart={this.deleteFromCart.bind(this)} cart={this.state.Cart} filterList={this.getFiltered.bind(this)}/>)
     return (
       <div>
         <h1 style={{ textAlign: 'center' }}>Shop Now</h1>
         <div className="books-app">
-          <ProductList products={this.state.filteredProducts} updateView={this.updateView.bind(this)} deleteFromCart={this.deleteFromCart.bind(this)} cart={this.state.Cart} filterList={this.getFiltered.bind(this)}/>
+          {/*{path === '/' ? productList : this.props.children}*/}
           <ProductView CartProduct={this.state.Cart}/>
         </div>
       </div>

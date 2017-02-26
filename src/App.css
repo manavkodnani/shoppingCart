@@ -55,6 +55,7 @@
     
     .book-view {
       flex-basis: 50%;
+      margin-left: 100px;
     }
     .search-bar {
       padding: 0px 0px 10px 0px;
