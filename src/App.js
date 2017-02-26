@@ -1,21 +1,49 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import ProductList from './ProductList.jsx'
+import ProductView from './ProductView.jsx'
+import products from './products.jsx'
+import './App.css'
 
-class App extends Component {
-  render() {
+export default class App extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      Cart: [], filteredProducts: products
+    }
+  }
+
+  updateView (product) {
+    this.state.Cart.push(product)
+    this.setState({Cart: this.state.Cart})
+  }
+
+  deleteFromCart (product) {
+    this.state.Cart = this.state.Cart.filter((item) => {
+      if(JSON.stringify(item) !== JSON.stringify(product)) {
+        return item
+      }
+    })
+    this.setState({Cart: this.state.Cart})
+  }
+
+  getFiltered (query) {
+    const filtered = products.filter(product => product.name.toLowerCase().includes(query.toLowerCase()))
+    this.setState(
+      {
+        filteredProducts: filtered
+      }
+    )
+  }
+
+  render () {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div>
+        <h1 style={{ textAlign: 'center' }}>Shop Now</h1>
+        <div className="books-app">
+          <ProductList products={this.state.filteredProducts} updateView={this.updateView.bind(this)} deleteFromCart={this.deleteFromCart.bind(this)} cart={this.state.Cart} filterList={this.getFiltered.bind(this)}/>
+          <ProductView CartProduct={this.state.Cart}/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
-    );
+    )
   }
 }
-
-export default App;

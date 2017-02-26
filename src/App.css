@@ -1,4 +1,4 @@
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -21,4 +21,47 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+}*/
+
+    .books-app {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    
+    .book-preview-img img {
+      width: 80px;
+      height: 80px;
+    }
+    
+    .book-view img {
+      width: 150px;
+      height: 150px;
+    }
+    .book-preview-details {
+      padding-left: 10px;
+    }
+    
+    .book-preview {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      padding: 10px 0px 10px 0px;
+    }
+    
+    .book-list {
+      flex-basis: 50%;
+    }
+    
+    .book-view {
+      flex-basis: 50%;
+    }
+    .search-bar {
+      padding: 0px 0px 10px 0px;
+    }
+    .hidden {
+      margin-left: 25px;
+    }
+    #search {
+      margin-left: 15px;
+    }
